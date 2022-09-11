@@ -290,7 +290,7 @@ sudo docker run --rm -i \
     -v /etc/localtime:/etc/localtime:ro \
     vuls/vuls report \
     -format-list \
-    -results-dir=/vuls/results
+    -results-dir=/vuls/results \
     -config=./config_db.toml
 
 touch /tmp/script.finished
