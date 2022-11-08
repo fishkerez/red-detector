@@ -21,30 +21,30 @@ docker pull vuls/gost
 docker pull erezfish/vuls
 
 PWD=/home/ubuntu/vuls/
-docker run --rm -i\
-    -v $PWD:/vuls \
-    -v $PWD/go-cve-dictionary-log:/var/log/vuls \
-    vuls/go-cve-dictionary --dbpath /vuls/cve.sqlite3 fetch nvd 
+#docker run --rm -i\
+#    -v $PWD:/vuls \
+#    -v $PWD/go-cve-dictionary-log:/var/log/vuls \
+#    vuls/go-cve-dictionary --dbpath /vuls/cve.sqlite3 fetch nvd 
 
 #docker run --rm -i \
 #    -v $PWD:/vuls \
 #    -v $PWD/goval-dictionary-log:/var/log/vuls \
 #    vuls/goval-dictionary --dbpath /vuls/oval.sqlite3 fetch redhat 8
 
-docker run --rm -i \
-    -v $PWD:/vuls \
-    -v $PWD/goval-dictionary-log:/var/log/vuls \
-    vuls/goval-dictionary --dbpath /vuls/oval.sqlite3 fetch debian 10
+#docker run --rm -i \
+#    -v $PWD:/vuls \
+#    -v $PWD/goval-dictionary-log:/var/log/vuls \
+#    vuls/goval-dictionary --dbpath /vuls/oval.sqlite3 fetch debian 10
     
 #docker run --rm -i \
 #    -v $PWD:/vuls \
 #    -v $PWD/goval-dictionary-log:/var/log/vuls \
 #    vuls/goval-dictionary --dbpath /vuls/oval.sqlite3 fetch alpine 3.11
 
-docker run --rm -i \
-    -v $PWD:/vuls \
-    -v $PWD/goval-dictionary-log:/var/log/vuls \
-    vuls/goval-dictionary --dbpath /vuls/oval.sqlite3 fetch ubuntu 22
+#docker run --rm -i \
+#    -v $PWD:/vuls \
+#    -v $PWD/goval-dictionary-log:/var/log/vuls \
+#    vuls/goval-dictionary --dbpath /vuls/oval.sqlite3 fetch ubuntu 22
 
 #docker run --rm -i \
 #    -v $PWD:/vuls \
@@ -66,20 +66,20 @@ docker run --rm -i \
 #    -v $PWD/goval-dictionary-log:/var/log/vuls \
 #    vuls/goval-dictionary --dbpath /vuls/oval.sqlite3 fetch amazon  
 
-docker run --rm -i \
-    -v $PWD:/vuls \
-    -v $PWD/gost-log:/var/log/gost \
-    vuls/gost --dbpath /vuls/gost.sqlite3 fetch redhat
+#docker run --rm -i \
+#    -v $PWD:/vuls \
+#    -v $PWD/gost-log:/var/log/gost \
+#    vuls/gost --dbpath /vuls/gost.sqlite3 fetch redhat
 
 #docker run --rm -i \
 #    -v $PWD:/vuls \
 #    -v $PWD/go-exploitdb-log:/var/log/go-exploitdb \
 #    vuls/go-exploitdb --dbpath /vuls/go-exploitdb.sqlite3 fetch exploitdb
 
-docker run --rm -i \
-    -v $PWD:/vuls \
-    -v $PWD/go-msfdb-log:/var/log/go-msfdb \
-    vuls/go-msfdb --dbpath /vuls/go-msfdb.sqlite3 fetch msfdb
+#docker run --rm -i \
+#    -v $PWD:/vuls \
+#    -v $PWD/go-msfdb-log:/var/log/go-msfdb \
+#    vuls/go-msfdb --dbpath /vuls/go-msfdb.sqlite3 fetch msfdb
     
 cat > config_scan.toml <<EOF
 [servers]
@@ -273,26 +273,26 @@ EOF
 cd /home/ubuntu/vuls
 
 echo "Scanning..."
-sudo docker run --rm -i \
--v /home/ubuntu/.ssh:/root/.ssh:ro \
--v /home/ubuntu/vuls:/vuls \
--v /home/ubuntu/vuls/vuls-log:/var/log/vuls \
--v /etc/localtime:/etc/localtime:ro \
--v /etc/timezone:/etc/timezone:ro \
-erezfish/vuls scan \
--config=./config_scan.toml
+#sudo docker run --rm -i \
+#-v /home/ubuntu/.ssh:/root/.ssh:ro \
+#-v /home/ubuntu/vuls:/vuls \
+#-v /home/ubuntu/vuls/vuls-log:/var/log/vuls \
+#-v /etc/localtime:/etc/localtime:ro \
+#-v /etc/timezone:/etc/timezone:ro \
+#erezfish/vuls scan \
+#-config=./config_scan.toml
 
 
-echo "Creating report..."
-sudo docker run --rm -i \
-    -v /home/ubuntu/.ssh:/root/.ssh:ro \
-    -v /home/ubuntu/vuls:/vuls \
-    -v /home/ubuntu/vuls/vuls-log:/var/log/vuls \
-    -v /etc/localtime:/etc/localtime:ro \
-    erezfish/vuls report \
-    -format-list \
-    -results-dir=/vuls/results \
-    -config=./config_db.toml
+#echo "Creating report..."
+#sudo docker run --rm -i \
+#    -v /home/ubuntu/.ssh:/root/.ssh:ro \
+#    -v /home/ubuntu/vuls:/vuls \
+#    -v /home/ubuntu/vuls/vuls-log:/var/log/vuls \
+#    -v /etc/localtime:/etc/localtime:ro \
+#    erezfish/vuls report \
+#    -format-list \
+#    -results-dir=/vuls/results \
+#    -config=./config_db.toml
 
 touch /tmp/script.finished
 #sudo pkill -9 -f "/usr/sbin/sshd -p 2222" & sudo umount /vol/proc  & sudo umount /vol/sys & sudo umount /vol/run & sudo umount /vol/dev/pts & sudo umount /vol/dev & sudo umount {mount_point}
